@@ -1,13 +1,16 @@
 document.addEventListener("DOMContentLoaded",()=>{
 const start = document.querySelector("#start")
+const stop = document.querySelector("#stop")
+const tour = document.querySelector("#tour")
+const reset =document.querySelector("#reset")
 var centieme = 0 
 var dixieme = 0 
 var seconde =0 
 let minute = 0 
-let compteur
 var afficher
-var sec_;
-
+var sec_
+var parametre
+var temps
 
 function horloge(){
 const date=new Date;
@@ -26,8 +29,6 @@ setTimeout(horloge,1000);
 
 function chronometer(){
 
-
-    // document.querySelector("#chrono").innerHTML = "0" + minute +":" + "0" + seconde +":" + centi + milli
         setInterval(function (){
             centieme++;
                 if (centieme > 9) {
@@ -56,15 +57,44 @@ function chronometer(){
         }
             
         afficher = minute +":"+ sec_ + ":" + dixieme + centieme;
-        document.getElementById("chrono").innerHTML = afficher;
+       temps= document.getElementById("chrono").innerHTML = afficher;
         
-      setTimeout(chronometer,100);
+     parametre = setTimeout(chronometer,100);
     
 }
-start.addEventListener("click",chronometer())
 
+function debut(){
+    start.addEventListener("click",chronometer)
+}
 
-// chronometer()
+function arret(){
+    stop.addEventListener("click",()=>{
+        clearTimeout(parametre)
+    })
+
+}
+function enregistrementTour(){
+    tour.addEventListener("click",()=>{
+        let tps =document.querySelector("#tps")
+        tps.innerHTML=temps
+    })
+}
+
+function reinitialiser(){
+    reset.addEventListener("click",()=>{
+        centieme = 0 
+        dixieme = 0 
+        sec_ =0 
+        minute = 0 
+        afficher = minute +":"+ sec_ + ":" + dixieme + centieme;
+        temps= document.getElementById("chrono").innerHTML = afficher;
+    })
+}
+
+reinitialiser()
+enregistrementTour()
+arret()
+debut()
 horloge()
 
 })
