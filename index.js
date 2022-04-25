@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const validation = document.querySelector("#valide")
     const timer = document.querySelector("#timer")
     const debutTimer = document.querySelector("#debutTimer")
+    const reveilHeure = document.querySelector("#hours")
+    const reveilMinute= document.querySelector("#min")
+    const progReveil = document.querySelector("#progReveil")
     var centieme = 0
     var dixieme = 0
     var seconde = 0
@@ -30,26 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(timvar
         innerH.innerHTML = time;
         setTimeout(horloge, 1000);
+        return time
     }
-   
+
     function decompteTimer() {
         gettime()
+
         seconde--
-        if (seconde <= 0) {
+        if (seconde < 0) {
             seconde = 59;
             minute--
         }
-   
+
         seconde = (seconde < 10) ? "0" + seconde : seconde;
         let time = minute + ":" + seconde
         timer.innerHTML = time
         param = setTimeout(decompteTimer, 1000)
-        if (minute === 0 && seconde === 0) {
-            alert("merde")
-             clearTimeout(param)   
-            }
+        console.log(time)
+        if (minute <= 0 && seconde <= 0) {
+            let sound = new Audio("minuteur.mp3")
+            sound.play()
+            clearTimeout(param)
+        }
     }
-    
+    function stopMusic() {
+        let sound = new Audio
+
+    }
     function startTimer() {
         debutTimer.addEventListener("click", decompteTimer)
     }
@@ -123,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             seconde = timerSeconde.value
             minute = timerMinute.value
 
-           let time = minute + ":" + seconde
+            let time = minute + ":" + seconde
             if (minute === null && seconde === null) {
                 alert("veuillez rentrer une valeur ")
             }
@@ -137,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // console.log(calc)
                 result = seconde - calc
                 // console.log(result + "seconde?")
-                if (result > 60) {
+                if (result >= 60) {
                     var calcMinute = result / 60
                     var resuCalc = parseInt(minute) + parseInt(calcMinute)
                     if (isNaN(parseInt(minute))) {
@@ -162,8 +172,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     }
+    function getReveil(){
+        let dateReveil = new Date
+        let h = dateReveil.getHours()
+        let m = dateReveil.getMinutes()
+        let s = dateReveil.getSeconds()
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s= (s < 10) ? "0" + s : s;
+        let timehorloge = h+":"+m+":"+s
+        let test = document.querySelector("#test")
+        test.innerHTML=timehorloge
+        progReveil.addEventListener("click",()=>{ 
+        heure = reveilHeure.value
+        minute = reveilMinute.value
+        let zeroseconde = 0
+        heure = (heure < 10) ? "0" + heure : heure
+        minute = (minute < 10) ? "0" + minute : minute
+        zeroseconde = (zeroseconde <10)?"0"+zeroseconde:zeroseconde
+        let timeR = heure +":"+ minute+":"+zeroseconde
+        let reveilA = document.querySelector("#reveilA")
+        reveilA.innerHTML=timeR
+        
+        
+    
+        console.log(timeR)
+        if (timeR == timehorloge) {
+            let sound = new Audio("minuteur.mp3")
+            sound.play()
+        }
+        
+        })
+        setTimeout(getReveil, 1000);
+    }
 
 
+
+    getReveil()
+    stopMusic()
     startTimer()
     gettime()
     reinitialiser()

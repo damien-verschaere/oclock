@@ -35,12 +35,22 @@
         <div id="minuteur">
             <h2>MINUTEUR</h2>
             <p id="timer"></p>
+            <button id="stopM">STOP</button>
             <button id="debutTimer">start</button>
             <div class="button">
                 <input type="number" id="minute" placeholder="minute">
                 <input type="number" id="seconde" placeholder="seconde">
                 <button id="valide">validez le temps </button>
             </div>
+        </div>
+        <div id=reveil>
+            <h2>REVEIL</h2>
+            <p id="test"></p>
+            <p id=reveilA></p>
+            <input type="number" id=hours placeholder="heure">
+            <input type="number" id=min placeholder="minute">
+            <button id="progReveil">programmer</button>
+            
         </div>
     </main>
 </body>
