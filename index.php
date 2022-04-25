@@ -35,6 +35,7 @@
         <div id="minuteur">
             <h2>MINUTEUR</h2>
             <p id="timer"></p>
+            <button id="debutTimer">start</button>
             <div class="button">
                 <input type="number" id="minute" placeholder="minute">
                 <input type="number" id="seconde" placeholder="seconde">

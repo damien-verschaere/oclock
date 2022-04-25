@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const timerSeconde = document.querySelector("#seconde")
     const validation = document.querySelector("#valide")
     const timer = document.querySelector("#timer")
+    const debutTimer = document.querySelector("#debutTimer")
     var centieme = 0
     var dixieme = 0
     var seconde = 0
@@ -30,17 +31,27 @@ document.addEventListener("DOMContentLoaded", () => {
         innerH.innerHTML = time;
         setTimeout(horloge, 1000);
     }
-    function decompteTimer(){
-        gettime(325)
-
-        setInterval(function () {
-            seconde--;
-            if (seconde<= 0) {
-                seconde = 59;
-
+   
+    function decompteTimer() {
+        gettime()
+        seconde--
+        if (seconde <= 0) {
+            seconde = 59;
+            minute--
+        }
+   
+        seconde = (seconde < 10) ? "0" + seconde : seconde;
+        let time = minute + ":" + seconde
+        timer.innerHTML = time
+        param = setTimeout(decompteTimer, 1000)
+        if (minute === 0 && seconde === 0) {
+            alert("merde")
+             clearTimeout(param)   
             }
-        }, 1);
-        minute--
+    }
+    
+    function startTimer() {
+        debutTimer.addEventListener("click", decompteTimer)
     }
     function chronometer() {
 
@@ -112,8 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
             seconde = timerSeconde.value
             minute = timerMinute.value
 
-            time = minute + ":" + seconde
-            if (minute===null && seconde===null ) {
+           let time = minute + ":" + seconde
+            if (minute === null && seconde === null) {
                 alert("veuillez rentrer une valeur ")
             }
             if (seconde < 0) {
@@ -127,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 result = seconde - calc
                 // console.log(result + "seconde?")
                 if (result > 60) {
-
                     var calcMinute = result / 60
                     var resuCalc = parseInt(minute) + parseInt(calcMinute)
                     if (isNaN(parseInt(minute))) {
@@ -136,23 +146,26 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                     // console.log(resuCalc)
-                    time = resuCalc + ":" + calc
+                    minute = resuCalc
+                    seconde = calc
+                    time = minute + ":" + seconde
                 }
 
             }
             else {
                 time = minute + ":" + seconde
             }
-            // console.log(time)
+            console.log(time)
             timer.innerHTML = time
+            return minute && seconde
         })
 
 
     }
 
 
-    decompteTimer()
-    // gettime()
+    startTimer()
+    gettime()
     reinitialiser()
     enregistrementTour()
     arret()
