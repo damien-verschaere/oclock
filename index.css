@@ -18,11 +18,11 @@ main{
     height: 50%;
  
 }
-h1,h2{
+h1,h2,#tps,#tpsTour{
     color: white;
     
 }
-.heure{
+#heure{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,8 @@ h1,h2{
     letter-spacing: 7px;
     text-shadow:  1px 1px 2px #17D4FE, 0 0 1em #17D4FE, 0 0 0.2em #17D4FE;
 }
-.chronometre{
+#chronometre{
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,10 +47,70 @@ h1,h2{
     flex-direction: column;
     align-items: center;
 }
-#minuteur button{
+#minuteur button, #debutTimer{
     display: inline;
     margin-top: 2%;
+    width: 150px;
+
 }
 #timer{
     color: white;
+}
+#tempsTour{
+    margin-bottom: 3%;
+}
+#tpsTour{
+    text-align: center;
+    margin: 1%;
+}
+.afficheModule{
+    display: flex;
+    justify-content:center;
+    margin-bottom: 2%;
+
+}
+.afficheModule button{
+    margin: 2%;
+    width: 150px;
+    background-color:#17D4FE;
+}
+#reveil{
+    display: flex;
+    flex-direction: column;
+}
+#reveil input,#reveil button {
+    margin-top: 2%;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: black;
+    margin-top: 5%;
+}
+footer p {
+    color: white;
+   
+}
+@media (max-width: 640px) {
+    *{
+      margin: 0;
+      padding: 0;  
+    }
+    header{
+        height: 20vh;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    body{
+        height: 100vh;
+        background-color: white;
+    }
+    h1,h2{
+        color: black;
+    }
 }

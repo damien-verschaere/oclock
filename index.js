@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const start = document.querySelector("#start")
-    const stop = document.querySelector("#stop")
-    const tour = document.querySelector("#tour")
-    const reset = document.querySelector("#reset")
-    const timerMinute = document.querySelector("#minute")
-    const timerSeconde = document.querySelector("#seconde")
-    const validation = document.querySelector("#valide")
-    const timer = document.querySelector("#timer")
-    const debutTimer = document.querySelector("#debutTimer")
-    const reveilHeure = document.querySelector("#hours")
-    const reveilMinute= document.querySelector("#min")
-    const progReveil = document.querySelector("#progReveil")
+    const start         = document.querySelector("#start")
+    const stop          = document.querySelector("#stop")
+    const tour          = document.querySelector("#tour")
+    const reset         = document.querySelector("#reset")
+    const timerMinute   = document.querySelector("#minute")
+    const timerSeconde  = document.querySelector("#seconde")
+    const validation    = document.getElementById("valide")
+    const timer         = document.querySelector("#timer")
+    const debutTimer    = document.getElementById("debutTimer")
+    const reveilHeure   = document.querySelector("#hours")
+    const reveilMinute  = document.querySelector("#min")
+    const progReveil    = document.querySelector("#progReveil")
+    let ht              = document.getElementById("heure")
+    let CT              = document.getElementById("chronometre")
+    let MT              = document.getElementById("minuteur")
+    let RT              = document.getElementById("reveil")
     var centieme = 0
     var dixieme = 0
     var seconde = 0
@@ -19,7 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
     var sec_
     var parametre
     var temps
+    let timeR = getsonne()
 
+    
+    function addElement() {
+        enregistrementTour()
+        tour.addEventListener("click", () => {
+            console.log(temps)
+            var newDiv = document.getElementById("tempsTour");
+            var newP = document.createElement("p")
+            newDiv.appendChild(newP);
+            newP.id = "tpsTour"
+            newP.innerHTML=temps
+            console.log(newDiv.outerHTML)
+            newDiv.after(newP)
+        })
+
+    }
     function horloge() {
         const date = new Date;
         var heure = date.getHours();
@@ -33,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(timvar
         innerH.innerHTML = time;
         setTimeout(horloge, 1000);
-        return time
+
     }
 
     function decompteTimer() {
@@ -56,12 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
             clearTimeout(param)
         }
     }
-    function stopMusic() {
-        let sound = new Audio
 
-    }
     function startTimer() {
         debutTimer.addEventListener("click", decompteTimer)
+        
     }
     function chronometer() {
 
@@ -100,19 +118,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function debut() {
-        start.addEventListener("click", chronometer)
+        start.addEventListener("click", ()=>{
+            chronometer()
+            start.disabled=true
+            stop.disabled= false
+            reset.disabled=true
+            tour.disabled=false
+
+        })
+        
     }
 
     function arret() {
         stop.addEventListener("click", () => {
             clearTimeout(parametre)
+            stop.disabled = true
+            start.disabled=false
+            
+            reset.disabled=false
+            tour.disabled=true
+
         })
 
     }
     function enregistrementTour() {
         tour.addEventListener("click", () => {
             let tps = document.querySelector("#tps")
-            tps.innerHTML = temps
+            // tps.innerHTML = temps
+            
         })
     }
 
@@ -129,17 +162,23 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
     function gettime() {
+        let but = document.getElementById("button")
+        but.display=""
+        debutTimer.style.display="none"
         validation.addEventListener("click", () => {
+            
+            if (but.style.display== "") {
+                but.style.display = "none"
+                debutTimer.style.display=""
+            }
             seconde = timerSeconde.value
             minute = timerMinute.value
-
             let time = minute + ":" + seconde
-            if (minute === null && seconde === null) {
-                alert("veuillez rentrer une valeur ")
-            }
+            
             if (seconde < 0) {
                 alert("le temps negatif est impossible")
             }
+            
             if (seconde > 60) {
                 console.log(seconde)
                 var calc = seconde % 60
@@ -162,54 +201,118 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
+            
             else {
                 time = minute + ":" + seconde
+                
             }
             console.log(time)
             timer.innerHTML = time
+            
+            
             return minute && seconde
         })
 
 
     }
-    function getReveil(){
+    function getsonne() {
+        progReveil.addEventListener("click", () => {
+            heure = reveilHeure.value
+            minute = reveilMinute.value
+            let zeroseconde = 0
+            heure = (heure < 10) ? "0" + heure : heure
+            minute = (minute < 10) ? "0" + minute : minute
+            zeroseconde = (zeroseconde < 10) ? "0" + zeroseconde : zeroseconde
+            timeR = heure + ":" + minute + ":" + zeroseconde
+            if (timeR= undefined + ":"+undefined) {
+                alert("veuillez rentrer une valeur ")
+                document.location.href="index.php";
+            }
+            else{
+            var reveilA = document.querySelector("#reveilA")
+            reveilA.innerHTML = timeR
+            return timeR
+            }
+        })
+
+    }
+    function getReveil() {
         let dateReveil = new Date
         let h = dateReveil.getHours()
         let m = dateReveil.getMinutes()
         let s = dateReveil.getSeconds()
         h = (h < 10) ? "0" + h : h;
         m = (m < 10) ? "0" + m : m;
-        s= (s < 10) ? "0" + s : s;
-        let timehorloge = h+":"+m+":"+s
+        s = (s < 10) ? "0" + s : s;
+        let timehorloge = h + ":" + m + ":" + s
         let test = document.querySelector("#test")
-        test.innerHTML=timehorloge
-        progReveil.addEventListener("click",()=>{ 
-        heure = reveilHeure.value
-        minute = reveilMinute.value
-        let zeroseconde = 0
-        heure = (heure < 10) ? "0" + heure : heure
-        minute = (minute < 10) ? "0" + minute : minute
-        zeroseconde = (zeroseconde <10)?"0"+zeroseconde:zeroseconde
-        let timeR = heure +":"+ minute+":"+zeroseconde
-        let reveilA = document.querySelector("#reveilA")
-        reveilA.innerHTML=timeR
-        
-        
-    
-        console.log(timeR)
-        if (timeR == timehorloge) {
+        test.innerHTML = timehorloge
+        // console.log(timeR)
+
+        setTimeout(getReveil, 1000);
+        getsonne()
+        if (timeR == undefined) {
+            timeR = 00 + ":" + 00 + ":" + 00
+        }
+        else if (timeR === timehorloge) {
+            // console.log("test passage sound ")
             let sound = new Audio("minuteur.mp3")
             sound.play()
+            // alert("test")
         }
+    }
+    function showHide(){
+        let afficheHorloge  = document.getElementById("afficheHorloge")
+        var afficheChrono   = document.querySelector("#afficheChrono")
+        var afficheMinuteur = document.querySelector("#afficheMinuteur") 
+        var afficheReveil   = document.querySelector("#afficheReveil")
+        let general         = document.getElementById("general")
         
+        ht.style.display = ""
+        CT.style.display = "none"
+        MT.style.display = "none"
+        RT.style.display = "none"
+        afficheHorloge.addEventListener("click",()=>{
+            if (ht.style.display =="none") {
+                ht.style.display="" 
+                CT.style.display="none" 
+                MT.style.display = "none"
+                RT.style.display = "none"
+            }
+         
+            
         })
-        setTimeout(getReveil, 1000);
+        afficheChrono.addEventListener("click",()=>{
+            if (CT.style.display=='none'){
+                CT.style.display=""
+                ht.style.display="none"
+                MT.style.display = "none"
+                RT.style.display = "none"
+            }
+        })
+        afficheMinuteur.addEventListener("click",()=>{
+            if(MT.style.display == 'none'){
+                CT.style.display="none"
+                ht.style.display="none"
+                MT.style.display = ""
+                RT.style.display = "none"
+            }
+        })
+        afficheReveil.addEventListener("click",()=>{
+            ht.style.display="none"
+            CT.style.display="none"
+            MT.style.display = "none"
+            RT.style.display = ""
+        })
     }
 
 
 
+
+
+    showHide()
+    addElement()
     getReveil()
-    stopMusic()
     startTimer()
     gettime()
     reinitialiser()

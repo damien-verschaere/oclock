@@ -15,11 +15,17 @@
         <h1>OCLOCK</h1>
     </header>
     <main>
-        <div class="heure">
+        <div class="afficheModule">
+            <button id="afficheHorloge">HORLOGE</button>
+            <button id="afficheChrono">CHRONOMETRE</button>
+            <button id="afficheMinuteur">MINUTEUR</button>
+            <button id="afficheReveil">REVEIL</button>
+        </div>
+        <div id="heure" >
             <h2>HORLOGE</h2>
             <p id="horloge"></p>
         </div>
-        <div class="chronometre">
+        <div id="chronometre">
             <h2>CHRONOMETRE</h2>
             <p id="chrono"></p>
             <div class=button>
@@ -28,16 +34,14 @@
                 <button id="tour">tour</button>
                 <button id="reset">reset</button>
             </div>
-            <div>
-                <p id="tps"></p>
-            </div>
+            <p id="tps"></p>
+        <div id="tempsTour"></div>
         </div>
         <div id="minuteur">
             <h2>MINUTEUR</h2>
             <p id="timer"></p>
-            <button id="stopM">STOP</button>
-            <button id="debutTimer">start</button>
-            <div class="button">
+            <button id="debutTimer">demarrer</button>
+            <div id="button">
                 <input type="number" id="minute" placeholder="minute">
                 <input type="number" id="seconde" placeholder="seconde">
                 <button id="valide">validez le temps </button>
@@ -50,9 +54,13 @@
             <input type="number" id=hours placeholder="heure">
             <input type="number" id=min placeholder="minute">
             <button id="progReveil">programmer</button>
-            
+
+        </div>
         </div>
     </main>
+    <footer>
+        <p> Copyright : DMW </p>
+    </footer>
 </body>
 
 </html>
