@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var sec_
     var parametre
     var temps
-    let timeR = getsonne()
+
 
     
     function addElement() {
@@ -69,10 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let time = minute + ":" + seconde
         timer.innerHTML = time
         param = setTimeout(decompteTimer, 1000)
-        console.log(time)
+        // console.log(time)
         if (minute <= 0 && seconde <= 0) {
-            let sound = new Audio("minuteur.mp3")
-            sound.play()
+            alert("fin du minuteur")
             clearTimeout(param)
         }
     }
@@ -134,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
             clearTimeout(parametre)
             stop.disabled = true
             start.disabled=false
-            
             reset.disabled=false
             tour.disabled=true
 

@@ -15,7 +15,7 @@ body{
 }
 main{
     margin-top: 3%;
-    height: 50%;
+    height: 100vh;
  
 }
 h1,h2,#tps,#tpsTour{
@@ -56,10 +56,12 @@ h1,h2,#tps,#tpsTour{
 
 #tempsTour{
     margin-bottom: 3%;
+    
 }
 #tpsTour{
     text-align: center;
     margin: 1%;
+    
 }
 .afficheModule{
     display: flex;
@@ -80,16 +82,13 @@ h1,h2,#tps,#tpsTour{
     margin-top: 2%;
 }
 footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70px;
-    background-color: black;
+    background-color: blue;
     margin-top: 5%;
+    height: 150px;
 }
 footer p {
     color: white;
-   
+   text-align: center;
 }
 @media (max-width: 640px) {
     *{
@@ -105,7 +104,7 @@ footer p {
         justify-content: center;
     }
     body{
-        height: 100vh;
+      
         background-color: white;
     }
     h1,h2{
@@ -113,6 +112,14 @@ footer p {
     }
     #tpsTour{
         color: black;
+        
+    }
+    main{
+        height: 100vh;
+    }
+    .test{
+      height: 300px;
+      margin-bottom: 50px;
     }
     #reveilButton{
         margin-bottom: 5%;
@@ -129,9 +136,12 @@ footer p {
         margin-top: 2%;
         color: black;
         font-size: 60px;
-        font-family: Orbitron;
+        font-family: 'Orbitron';
         letter-spacing: 7px;
         text-shadow:  1px 1px 2px #17D4FE, 0 0 1em #17D4FE, 0 0 0.2em black;
+    }
+    #tempsTour{
+        margin-bottom: 5%;
     }
     footer{
         margin-top: 15%;

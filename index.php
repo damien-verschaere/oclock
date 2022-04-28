@@ -35,7 +35,10 @@
                 <button id="reset">reset</button>
             </div>
             <p id="tps"></p>
+            <div class="test">
             <div id="tempsTour"></div>
+            
+            </div>
         </div>
         <div id="minuteur">
             <h2>MINUTEUR</h2>
