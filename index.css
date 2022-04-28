@@ -31,9 +31,9 @@ h1,h2,#tps,#tpsTour{
     margin-top: 2%;
     color: #17D4FE;
     font-size: 60px;
-    font-family: Orbitron;
+    font-family: "Orbitron";
     letter-spacing: 7px;
-    text-shadow:  1px 1px 2px #17D4FE, 0 0 1em #17D4FE, 0 0 0.2em #17D4FE;
+    text-shadow:  1px 1px 2px #17D4FE, 0 0 1em #17D4FE, 0 0 0.2em black;
 }
 #chronometre{
     margin-top: 2%;
@@ -47,15 +47,13 @@ h1,h2,#tps,#tpsTour{
     flex-direction: column;
     align-items: center;
 }
-#minuteur button, #debutTimer{
+#minuteur .button, #debutTimer{
     display: inline;
     margin-top: 2%;
     width: 150px;
 
 }
-#timer{
-    color: white;
-}
+
 #tempsTour{
     margin-bottom: 3%;
 }
@@ -112,5 +110,40 @@ footer p {
     }
     h1,h2{
         color: black;
+    }
+    #tpsTour{
+        color: black;
+    }
+    #reveilButton{
+        margin-bottom: 5%;
+    }
+    #reveilA{
+        margin-bottom: 3%;
+    }
+    #button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #horloge,#chrono,#timer,#reveilA,#test {
+        margin-top: 2%;
+        color: black;
+        font-size: 60px;
+        font-family: Orbitron;
+        letter-spacing: 7px;
+        text-shadow:  1px 1px 2px #17D4FE, 0 0 1em #17D4FE, 0 0 0.2em black;
+    }
+    footer{
+        margin-top: 15%;
+        background-color: white;
+    }
+    footer p {
+        color: black;
+        text-align: center;
+    }
+    .afficheModule{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

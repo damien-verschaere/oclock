@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
     function chronometer() {
-
+        
         setInterval(function () {
             centieme++;
             if (centieme > 9) {
@@ -219,20 +219,17 @@ document.addEventListener("DOMContentLoaded", () => {
         progReveil.addEventListener("click", () => {
             heure = reveilHeure.value
             minute = reveilMinute.value
-            let zeroseconde = 0
-            heure = (heure < 10) ? "0" + heure : heure
-            minute = (minute < 10) ? "0" + minute : minute
-            zeroseconde = (zeroseconde < 10) ? "0" + zeroseconde : zeroseconde
+            let zeroseconde = "0"+0
+            // heure = (heure < 10) ? "0" + heure : heure
+            // minute = (minute < 10) ? "0" + minute : minute
+            
             timeR = heure + ":" + minute + ":" + zeroseconde
-            if (timeR= undefined + ":"+undefined) {
-                alert("veuillez rentrer une valeur ")
-                document.location.href="index.php";
-            }
-            else{
+          
+            
             var reveilA = document.querySelector("#reveilA")
             reveilA.innerHTML = timeR
             return timeR
-            }
+            
         })
 
     }
@@ -255,10 +252,9 @@ document.addEventListener("DOMContentLoaded", () => {
             timeR = 00 + ":" + 00 + ":" + 00
         }
         else if (timeR === timehorloge) {
-            // console.log("test passage sound ")
             let sound = new Audio("minuteur.mp3")
             sound.play()
-            // alert("test")
+           
         }
     }
     function showHide(){

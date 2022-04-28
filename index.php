@@ -21,7 +21,7 @@
             <button id="afficheMinuteur">MINUTEUR</button>
             <button id="afficheReveil">REVEIL</button>
         </div>
-        <div id="heure" >
+        <div id="heure">
             <h2>HORLOGE</h2>
             <p id="horloge"></p>
         </div>
@@ -35,7 +35,7 @@
                 <button id="reset">reset</button>
             </div>
             <p id="tps"></p>
-        <div id="tempsTour"></div>
+            <div id="tempsTour"></div>
         </div>
         <div id="minuteur">
             <h2>MINUTEUR</h2>
@@ -51,11 +51,11 @@
             <h2>REVEIL</h2>
             <p id="test"></p>
             <p id=reveilA></p>
+            <div id="reveilButton">
             <input type="number" id=hours placeholder="heure">
             <input type="number" id=min placeholder="minute">
             <button id="progReveil">programmer</button>
-
-        </div>
+            </div>
         </div>
     </main>
     <footer>
