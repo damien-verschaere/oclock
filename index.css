@@ -27,7 +27,7 @@ h1,h2,#tps,#tpsTour{
     flex-direction: column;
     align-items: center;
 }
-#horloge,#chrono,#timer,#reveilA,#test {
+#horloge,#chrono,#timer,#reveilA,#test,.rListe {
     margin-top: 2%;
     color: #17D4FE;
     font-size: 60px;
@@ -40,6 +40,18 @@ h1,h2,#tps,#tpsTour{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#listeReveil{
+    height: auto;
+    width: 25vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+#listeReveil input{
+    height: 100px;
+    color: white;
+    margin-right: 15%;
 }
 #minuteur,#reveil{
     margin-top: 2%;
@@ -78,7 +90,7 @@ h1,h2,#tps,#tpsTour{
     display: flex;
     flex-direction: column;
 }
-#reveil input,#reveil button {
+#reveil #hours,#reveil #min,#reveil button {
     margin-top: 2%;
 }
 footer{
