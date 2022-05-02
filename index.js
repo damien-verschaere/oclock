@@ -12,11 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const reveilMinute = document.querySelector("#min")
     const progReveil = document.querySelector("#progReveil")
     let listeReveil = document.getElementById("listeReveil")
-    let suppress = document.querySelector("#delete")
+    let arretMusic = document.querySelector("#stopMusic")
     let ht = document.getElementById("heure")
     let CT = document.getElementById("chronometre")
     let MT = document.getElementById("minuteur")
     let RT = document.getElementById("reveil")
+    let sound = new Audio("minuteur.mp3")
     var centieme = 0
     var dixieme = 0
     var seconde = 0
@@ -28,17 +29,21 @@ document.addEventListener("DOMContentLoaded", () => {
     var timeR
     let tabTimer = []
     let times =[]
+    let sec_onde
+    let minu_te
+
+
 
     function horloge() {
         const date = new Date;
-        var heure = date.getHours();
+        var heures = date.getHours();
         var minutes = date.getMinutes();
         var secondes = date.getSeconds();
-        heure = (heure < 10) ? "0" + heure : heure;
+        heures = (heures < 10) ? "0" + heures : heures;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         secondes = (secondes < 10) ? "0" + secondes : secondes;
         var innerH = document.querySelector('#horloge');
-        var time = `${heure}:${minutes}:${secondes}`;
+        var time = `${heures}:${minutes}:${secondes}`;
         // console.log(timvar
         innerH.innerHTML = time;
         setTimeout(horloge, 1000);
@@ -150,46 +155,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 but.style.display = "none"
                 debutTimer.style.display = ""
             }
-            seconde = timerSeconde.value
-            minute = timerMinute.value
-            let time = minute + ":" + seconde
+            sec_onde = timerSeconde.value
+            minu_te = timerMinute.value
+            let time = minu_te + ":" + sec_onde
 
-            if (seconde < 0) {
+            if (sec_onde < 0) {
                 alert("le temps negatif est impossible")
             }
 
-            if (seconde > 60) {
-                console.log(seconde)
-                var calc = seconde % 60
+            if (sec_onde > 60) {
+                console.log(sec_onde)
+                var calc = sec_onde % 60
                 // console.log(seconde)
                 // console.log(calc)
-                result = seconde - calc
+                result = sec_onde - calc
                 // console.log(result + "seconde?")
                 if (result >= 60) {
                     var calcMinute = result / 60
-                    var resuCalc = parseInt(minute) + parseInt(calcMinute)
-                    if (isNaN(parseInt(minute))) {
+                    var resuCalc = parseInt(minu_te) + parseInt(calcMinute)
+                    if (isNaN(parseInt(minu_te))) {
                         if (true) {
                             resuCalc = calcMinute
                         }
                     }
                     // console.log(resuCalc)
-                    minute = resuCalc
-                    seconde = calc
-                    time = minute + ":" + seconde
+                    minu_te = resuCalc
+                    sec_onde = calc
+                    time = minu_te + ":" + sec_onde
                 }
 
             }
 
             else {
-                time = minute + ":" + seconde
+                time = minu_te + ":" + sec_onde
 
             }
             console.log(time)
             timer.innerHTML = time
 
 
-            return minute && seconde
+            return minu_te && sec_onde
         })
 
 
@@ -197,18 +202,18 @@ document.addEventListener("DOMContentLoaded", () => {
     function decompteTimer() {
         gettime()
 
-        seconde--
-        if (seconde < 0) {
-            seconde = 59;
-            minute--
+        sec_onde--
+        if (sec_onde < 0) {
+            sec_onde = 59;
+            minu_te--
         }
 
-        seconde = (seconde < 10) ? "0" + seconde : seconde;
-        let time = minute + ":" + seconde
+        sec_onde = (sec_onde < 10) ? "0" + sec_onde : sec_onde;
+        let time = minu_te + ":" + sec_onde
         timer.innerHTML = time
         param = setTimeout(decompteTimer, 1000)
         // console.log(time)
-        if (minute <= 0 && seconde <= 0) {
+        if (minu_te <= 0 && sec_onde <= 0) {
             alert("fin du minuteur")
             clearTimeout(param)
         }
@@ -239,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
         times.forEach(reveil => {
             console.log(reveil)
             if (reveil === timehorloge) {
-                let sound = new Audio("minuteur.mp3")
+                
                 sound.play()
     
             }
@@ -258,25 +263,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function selectionReveil() {
 
-        heure = reveilHeure.value
-        minute = reveilMinute.value
+       let hours = reveilHeure.value
+        let min_ute = reveilMinute.value
         
-        if (heure >23) {
-            heure = "0"+0
+        if (hours >23) {
+            hours = 7
         }
-        if (minute > 59) {
-            minute = "0"+0
+        if (min_ute > 59) {
+            min_ute = 0
         }
-        if (heure == "" && minute=="") {
+        if (hours == "" && min_ute=="") {
             alert("reveil pour 7 heure n'essaie pas de gruger ")
-            heure = "7"
-            minute = "0"+0
+            hours= "7"
+            min_ute = "0"
         }
         let zeroseconde = "0" + 0
-        timeR = heure + ":" + minute + ":" + zeroseconde
+        hours = (hours < 10) ? "0" + hours : hours;
+        min_ute = (min_ute < 10) ? "0" + min_ute : min_ute;
+        timeR = hours + ":" + min_ute + ":" + zeroseconde
         let liste
         let check
-        var supp=document.createElement("button")
         tabTimer.push(timeR)
         var essaie = document.createElement("input");
         essaie.setAttribute("type", "checkbox");
@@ -291,7 +297,14 @@ document.addEventListener("DOMContentLoaded", () => {
             selectionReveil()
         })
     }
-    
+    function stopmusic(){
+        arretMusic.addEventListener("click",()=>{
+            sound.pause();
+            sound.currentTime = 0;
+        
+        })
+    }
+    stopmusic()
     // --------------------------------------------------------- affichage-----------------------------------------------------------
     function showHide() {
         let afficheHorloge = document.getElementById("afficheHorloge")
@@ -315,11 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         })
         afficheChrono.addEventListener("click", () => {
-            clearInterval()
-            centieme = 0
-            dixieme = 0
-            seconde = 0
-            minute = 0
             if (CT.style.display == 'none') {
                 CT.style.display = ""
                 ht.style.display = "none"

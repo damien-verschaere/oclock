@@ -57,6 +57,7 @@
             <input type="number" id=hours placeholder="heure">
             <input type="number" id=min placeholder="minute">
             <button id="progReveil">programmer</button>
+            <button id="stopMusic">stopper</button>
             </div>
             <div id="listeReveil">
             </div>

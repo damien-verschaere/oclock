@@ -44,14 +44,19 @@ h1,h2,#tps,#tpsTour{
 
 #listeReveil{
     height: auto;
-    width: 40vh;
+    width: 37vh;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5%;
 }
 #listeReveil input{
-    height: 100px;
     color: white;
-    margin-right: 10%;
+    margin-top: 10%;
+    margin-right: 5%;
+}
+#listeReveil p {
+    
 }
 #minuteur,#reveil{
     margin-top: 2%;
