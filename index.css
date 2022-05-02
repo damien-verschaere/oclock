@@ -44,14 +44,14 @@ h1,h2,#tps,#tpsTour{
 
 #listeReveil{
     height: auto;
-    width: 25vh;
+    width: 40vh;
     display: flex;
     flex-wrap: wrap;
 }
 #listeReveil input{
     height: 100px;
     color: white;
-    margin-right: 15%;
+    margin-right: 10%;
 }
 #minuteur,#reveil{
     margin-top: 2%;
@@ -89,13 +89,14 @@ h1,h2,#tps,#tpsTour{
 #reveil{
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 #reveil #hours,#reveil #min,#reveil button {
     margin-top: 2%;
 }
 footer{
     background-color: blue;
-    margin-top: 5%;
+    
     height: 150px;
 }
 footer p {
